@@ -1,19 +1,34 @@
-class RunCmd {
+// RunCmd.groovy
 
+// 定义一个类
+class RunCmd {
+    
+    // 保存传入的脚本引用
     def script
 
+    // 构造函数
     RunCmd(script) {
         this.script = script
     }
 
-    def boolean runCmd(String command) {
+    // 方法用于运行命令
+    def runCmd(String command) {
         if (isWindows()) {
-            script.bat script: command, returnStatus: returnStatus
+            script.bat command
         } else {
-            script.sh script: command, returnStatus: returnStatus
+            script.sh command
         }
     }
 
+    // def boolean runCmd(String command, boolean returnStatus) {
+    //     if (isWindows()) {
+    //         script.bat script: command, returnStatus: returnStatus
+    //     } else {
+    //         script.sh script: command, returnStatus: returnStatus
+    //     }
+    // }
+
+    // 方法用于判断是否是Windows系统
     private boolean isWindows() {
         return script.env.PATH.contains('C:\\')
     }
