@@ -5,7 +5,13 @@ pipeline {
         stage('Example Stage') {
             steps {
                 script {
-                    println "This is a forced error."
+                    if (env.PATH.contains('C:\\')) {
+                        // Windows 环境
+                        println 'Running on Windows'
+                    } else {
+                        // Unix/Linux 环境
+                        println 'Running on Unix/Linux'
+                    }
                 }
             }
         }
