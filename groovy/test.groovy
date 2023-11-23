@@ -1,7 +1,3 @@
 def call() {
-    stage('Test') {
-        script{
-            println "conda env not exists"
-        }
-    }
+    println "conda env not exists"
 }
