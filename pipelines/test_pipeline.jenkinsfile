@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Example Stage') {
+            steps {
+                script {
+                    println "This is a forced error."
+                }
+            }
+        }
+        stage('Calculate Sum') {
+            steps {
+                script {
+                    def sum = 0
+                    (1..100).each { number ->
+                        sum += number
+                    }
+                    println "The sum of numbers from 1 to 100 is: $sum"
+                }
+            }
+        }
+        stage('Calculate Sum2') {
+            steps {
+                script {
+                    def sum = 0
+                    (1..200).each { number ->
+                        sum += number
+                    }
+                    println "The sum of numbers from 1 to 200 is: $sum"
+                }
+            }
+        }
+        stage('Calculate Sum3') {
+            steps {
+                script {
+                    def sum = 0
+                    (1..300).each { number ->
+                        sum += number
+                    }
+                    println "The sum of numbers from 1 to 300 is: $sum"
+                }
+            }
+        }
+    }
+}
