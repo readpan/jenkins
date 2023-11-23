@@ -6,16 +6,18 @@ node {
     def requirementsPath = 'requirements.txt'
 
     stage('Setup Python Environment') {
-        bat "echo 'aa'"
-        bat "conda info --envs"
-        // // 检查 conda 环境是否存在
-        // def envExists = sh(script: "conda info --envs | grep ${envName}", returnStatus: true) == 0
-        // if (!envExists) {
-        //     // 创建 conda 环境
-        //     sh "conda create -n ${envName} python=3.10 -y"
-        // }
+        def runCmd = load 'groovy/RunCmd.groovy'
+        // 检查 conda 环境是否存在
+        def envExists = runCmd.runCmd(script: "conda info --envs | grep ${envName}")
+        // 打印envExists
+        println envExists
+        if (!envExists) {
+            // 创建 conda 环境
+            bat "echo 'conda evn not exists'"
+            // sh "conda create -n ${envName} python=3.10 -y"
+        }
 
-        // // 激活环境并安装依赖
+        // 激活环境并安装依赖
         // sh """
         //     source activate ${envName}
         //     pip install -r ${requirementsPath}
