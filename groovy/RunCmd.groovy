@@ -25,4 +25,4 @@ class RunCmd {
         return script.env.PATH.contains('C:\\')
     }
 }
-return this
+return new RunCmd(this)
