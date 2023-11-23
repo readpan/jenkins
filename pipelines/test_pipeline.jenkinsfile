@@ -10,7 +10,7 @@ pipeline {
                     def commonPipeline = load '../groovy/RunCmd.groovy'
                     
                     // 创建一个实例
-                    def pipelineFunctions = new commonPipeline.CommonPipelineFunctions(this)
+                    def pipelineFunctions = new commonPipeline.RunCmd(this)
                     
                     // 使用实例中的方法
                     pipelineFunctions.runCmd('echo Hello World')
