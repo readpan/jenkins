@@ -3,6 +3,7 @@ def call(RunCmd runCmd) {
     def requirementsPath = 'requirements.txt'
 
     stage('Setup Python Environment') {
+        script{
         // 使用传入的 runCmd 实例
         // 检查 conda 玡境是否存在
         runCmd.runCmd("conda info --envs")
@@ -20,5 +21,6 @@ def call(RunCmd runCmd) {
         //     source activate ${envName}
         //     pip install -r ${requirementsPath}
         // """
+        }
     }
 }
