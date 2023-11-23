@@ -8,7 +8,8 @@ pipeline {
                     def r = load 'groovy/RunCmd.groovy'
                     // 使用 runCmd 方法
                     r.runCmd('python --version')
-                    load 'pipelines/base/build_python_env.groovy'(r)
+                    load 'pipelines/base/test.groovy'()
+                    // load 'pipelines/base/build_python_env.groovy'(r)
                 }
             }
         }
