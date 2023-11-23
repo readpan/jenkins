@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // 加载并直接获取 RunCmd 的实例
-                    def runCmd = load '../groovy/RunCmd.groovy'
+                    def runCmd = load 'groovy/RunCmd.groovy'
 
                     // 使用 runCmd 方法
                     runCmd.runCmd('echo Hello World')
