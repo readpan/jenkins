@@ -2,7 +2,9 @@
 pipeline {
     agent any
     environment{
-        CONDA = 'conda activate py3104'
+        CONDA_PATHON_NAME = 'jenkins_trf'
+        PYTHON_VERSION = '3.10'
+        CONDA = "conda activate ${CONDA_PATHON_NAME}"
         PYPATH = '%WORKSPACE%/python_scripts'
     }
     stages {
@@ -10,8 +12,9 @@ pipeline {
             steps {
                 script {
                     // 使用 runCmd 方法
+                    runCmd("python ${PYPATH}/create_env.py ${CONDA_PATHON_NAME} ${PYTHON_VERSION}")
+
                     runCmd("${CONDA} && python --version")
-                    runCmd("${CONDA} && python ${PYPATH}/tests/test_print.py")
                 }
             }
         }
