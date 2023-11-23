@@ -7,7 +7,7 @@ pipeline {
                     // 加载并直接获取 RunCmd 的实例
                     load 'groovy/RunCmd.groovy'
                     // 使用 runCmd 方法
-                    RunCmd.runCmd('python --version')
+                    RunCmd.runCmd(this, 'python --version')
                     // load 'groovy/test.groovy'
                     // load 'pipelines/base/build_python_env.groovy'(r)
                 }
