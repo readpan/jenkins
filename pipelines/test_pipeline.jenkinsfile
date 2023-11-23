@@ -1,50 +1,19 @@
 pipeline {
     agent any
 
+    def runCmd
     stages {
         stage('Example Stage') {
             steps {
                 script {
                     // 加载并直接获取 RunCmd 的实例
-                    def runCmd = load 'groovy/RunCmd.groovy'
+                    bat 'pwd'
+                    runCmd = load 'groovy/RunCmd.groovy'
                     // 使用 runCmd 方法
                     runCmd.runCmd('python --version')
                     load 'pipelines/base/build_python_env.groovy'(runCmd)
                 }
             }
         }
-        // stage('Calculate Sum') {
-        //     steps {
-        //         script {
-        //             def sum = 0
-        //             (1..100).each { number ->
-        //                 sum += number
-        //             }
-        //             println "The sum of numbers from 1 to 100 is: $sum"
-        //         }
-        //     }
-        // }
-        // stage('Calculate Sum2') {
-        //     steps {
-        //         script {
-        //             def sum = 0
-        //             (1..200).each { number ->
-        //                 sum += number
-        //             }
-        //             println "The sum of numbers from 1 to 200 is: $sum"
-        //         }
-        //     }
-        // }
-        // stage('Calculate Sum3') {
-        //     steps {
-        //         script {
-        //             def sum = 0
-        //             (1..300).each { number ->
-        //                 sum += number
-        //             }
-        //             println "The sum of numbers from 1 to 300 is: $sum"
-        //         }
-        //     }
-        // }
     }
 }
