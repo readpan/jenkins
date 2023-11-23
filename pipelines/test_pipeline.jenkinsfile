@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // 使用 runCmd 方法
                     runCmd("${CONDA} && python --version")
-                    runCmd("${CONDA} && python ${PYPATH}/test/test_print.py")
+                    runCmd("${CONDA} && python ${PYPATH}/tests/test_print.py")
                 }
             }
         }
