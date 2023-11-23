@@ -5,10 +5,10 @@ pipeline {
             steps {
                 script {
                     // 加载并直接获取 RunCmd 的实例
-                    def runCmd = load 'groovy/RunCmd.groovy'
+                    def r = load 'groovy/RunCmd.groovy'
                     // 使用 runCmd 方法
-                    runCmd.runCmd('python --version')
-                    load 'pipelines/base/build_python_env.groovy'(runCmd)
+                    r.runCmd('python --version')
+                    load 'pipelines/base/build_python_env.groovy'(r)
                 }
             }
         }
