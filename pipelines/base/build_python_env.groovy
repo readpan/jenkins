@@ -3,7 +3,7 @@ def envName = 'jenkins_env'
 def requirementsPath = 'requirements.txt'
 
 stage('Setup Python Environment') {
-    def runCmd = load 'groovy/RunCmd.groovy'
+    // def runCmd = load 'groovy/RunCmd.groovy'
     // 检查 conda 环境是否存在
     def envExists = runCmd.runCmd(script: "conda info --envs | grep ${envName}")
     // 打印envExists
