@@ -5,14 +5,14 @@ pipeline {
         stage('Example Stage') {
             steps {
                 script {
-                    // 加载 CommonPipelineFunctions.groovy
-                    def commonPipeline = load '../groovy/RunCmd.groovy'
-                    
-                    // 创建一个实例
-                    def pipelineFunctions = new commonPipeline.RunCmd(this)
-                    
-                    // 使用实例中的方法
-                    pipelineFunctions.runCmd('echo Hello World')
+                    // 从 pipelines 目录加载位于 groovy 目录的 RunCmd.groovy
+                    def runCmdClass = load '../groovy/RunCmd.groovy'
+
+                    // 创建 RunCmd 的实例
+                    def runCmd = new runCmdClass.RunCmd(this)
+
+                    // 使用 runCmd 方法
+                    runCmd.runCmd('echo Hello World')
                 }
             }
         }
