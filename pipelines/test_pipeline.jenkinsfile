@@ -7,9 +7,7 @@ pipeline {
                 script {
                     // 加载并直接获取 RunCmd 的实例
                     def runCmd = load 'groovy/RunCmd.groovy'
-
                     // 使用 runCmd 方法
-                    runCmd.runCmd('conda')
                     runCmd.runCmd('python --version')
                     load 'pipelines/base/build_python_env.groovy'
                 }

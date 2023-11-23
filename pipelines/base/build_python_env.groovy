@@ -6,7 +6,7 @@ node {
     def requirementsPath = 'requirements.txt'
 
     stage('Setup Python Environment') {
-        sh "conda --version"
+        sh "echo 'aa'"
         // // 检查 conda 环境是否存在
         // def envExists = sh(script: "conda info --envs | grep ${envName}", returnStatus: true) == 0
         // if (!envExists) {
