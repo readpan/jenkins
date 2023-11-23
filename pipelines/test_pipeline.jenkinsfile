@@ -1,13 +1,17 @@
 @Library('shared-lib') _
 pipeline {
     agent any
+    environment{
+        CONDA = 'conda activate py3104'
+        PYPATH = '%WORKSPACE%/python_scripts'
+    }
     stages {
         stage('Example Stage') {
             steps {
                 script {
                     // 使用 runCmd 方法
-                    runCmd('python --version')
-                    runCmd('conda --version')
+                    runCmd("${CONDA} && python --version")
+                    runCmd("${CONDA} && python ${PYPATH}/test/test_print.py")
                 }
             }
         }
