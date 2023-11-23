@@ -10,6 +10,7 @@ pipeline {
 
                     // 使用 runCmd 方法
                     runCmd.runCmd('echo Hello World')
+                    load 'pipelines/base/build_python_env.jenkinsfile'
                 }
             }
         }
