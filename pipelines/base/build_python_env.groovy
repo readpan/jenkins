@@ -6,17 +6,18 @@ node {
     def requirementsPath = 'requirements.txt'
 
     stage('Setup Python Environment') {
-        // 检查 conda 环境是否存在
-        def envExists = sh(script: "conda info --envs | grep ${envName}", returnStatus: true) == 0
-        if (!envExists) {
-            // 创建 conda 环境
-            sh "conda create -n ${envName} python=3.10 -y"
-        }
+        sh "conda --version"
+        // // 检查 conda 环境是否存在
+        // def envExists = sh(script: "conda info --envs | grep ${envName}", returnStatus: true) == 0
+        // if (!envExists) {
+        //     // 创建 conda 环境
+        //     sh "conda create -n ${envName} python=3.10 -y"
+        // }
 
-        // 激活环境并安装依赖
-        sh """
-            source activate ${envName}
-            pip install -r ${requirementsPath}
-        """
+        // // 激活环境并安装依赖
+        // sh """
+        //     source activate ${envName}
+        //     pip install -r ${requirementsPath}
+        // """
     }
 }
